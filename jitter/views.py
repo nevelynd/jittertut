@@ -24,35 +24,31 @@ def mainuser(request):
     template = loader.get_template('jitter/mainuser.html')
     context = {'latest_users_list' : latest_users_list,
     } 
-  #  return render(request, "index.html")
     return HttpResponse(template.render(context,request))
 def bunkform(request):
-    # if request.POST:
-
-    #     form = Bunkform(request.POST, request.POST)
-    #     if form.username and form.other_user:
-    #         form.save()
-    #     return redirect(index)
-    # return render(request, "jitter/bunkform.html", {"form": Bunkform})
-    print(1)
+   
     if request.method =='POST':
        
-        form = BunkFormm(request.POST, request.POST)
-        print(2)
-        print(form.is_valid())
-        if request.POST['your_name'] and request.POST['other_name']:
-            
-            form.save()
+        form = BunkFormm(request.POST)
+      
+        if form.is_valid():
+            your_name = form.cleaned_data['your_name']
+            other_name = form.cleaned_data['other_name']
+            bunkform = Bunkform(your_name=your_name, other_name=other_name)
+            bunkform.save()
         else:
             
             print("hi")
-            return render(request, 'jitter/index.html')
+            return render(request, 'jitter/formfailed.html')
         
     else: 
         form = BunkFormm()
     return render(request, 'jitter/bunkform.html', {"form": form})
        
     
+def formfailed(request):
+
+    return render(request, 'jitter/formfailed.html')
 
 
 

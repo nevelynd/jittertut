@@ -6,9 +6,7 @@ from .models import Bunkform
 from django.forms import ModelForm
   
 # creating a form  
-class BunkFormm(forms.ModelForm): 
-    # username = forms.CharField(max_length = 200) 
-    # other_user = forms.CharField(max_length = 200) 
-    class Meta:
-        model=Bunkform
-        fields = ['username', 'other_user']
+class BunkFormm(forms.Form): 
+    your_name = forms.CharField(max_length = 200) 
+    other_name = forms.CharField(max_length = 200) 
+   

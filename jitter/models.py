@@ -22,6 +22,6 @@ class Bunk(models.Model):
 
 
 class Bunkform(models.Model):
-    username = models.CharField(max_length=200)
-    other_user = models.CharField(max_length=200)
+    your_name = models.CharField(max_length=200)
+    other_name = models.CharField(max_length=200)
 
