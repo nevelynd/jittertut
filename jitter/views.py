@@ -4,6 +4,7 @@ from jitter.models import Bunk, User, Bunkform
 from django.template import loader
 from django.urls import reverse
 from .forms import BunkFormm
+from datetime import datetime
 
 def index(request):
 
@@ -34,11 +35,20 @@ def bunkform(request):
         if form.is_valid():
             your_name = form.cleaned_data['your_name']
             other_name = form.cleaned_data['other_name']
+            if not User.objects.filter(username=your_name) or not User.objects.filter(username=other_name):
+                return render(request, 'jitter/formfailed.html')
+
+            # if User.objects.get(username=your_name)
             bunkform = Bunkform(your_name=your_name, other_name=other_name)
             bunkform.save()
+            user1 = User.objects.get(username=your_name)
+            user2 = User.objects.get(username=other_name)
+            addbunk = Bunk(from_user=user1, to_user=user2, time=datetime.now())
+            addbunk.save()
+            return render(request, 'jitter/formsuccess.html')
         else:
             
-            print("hi")
+          
             return render(request, 'jitter/formfailed.html')
         
     else: 
@@ -50,7 +60,9 @@ def formfailed(request):
 
     return render(request, 'jitter/formfailed.html')
 
+def formsuccess(request):
 
+    return render(request, 'jitter/formsuccess.html')
 
 
 def view_bunks(request,pk):   

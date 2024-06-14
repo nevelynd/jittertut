@@ -13,5 +13,6 @@ path('mainuser/', views.mainuser, name='mainuser'),
 path('mainuser/<int:pk>/', views.view_bunks, name='userbunks'),
 path('bunkform/', views.bunkform, name='bunkform'),
 path('formfailed/', views.formfailed, name='formfailed'),
+path('formsuccess/', views.formsuccess, name='formsuccess'),
 
 ]
