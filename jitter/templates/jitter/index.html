@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
+
+    <ul>
+    
+        <li><a href="/jitter/mainbunk">All Bunks!</a></li>
+        <li><a href="/jitter/mainuser">All Users!</a></li>
+	<li><a href="{% url 'jitter:bunkform' %}">Wanna bunk someone?</a></li>   
+    </ul>
+

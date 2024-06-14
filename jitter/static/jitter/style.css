@@ -1,0 +1,17 @@
+li {
+    color: black;
+    font-size: large;
+    background-color: aquamarine;
+    
+}
+
+p {
+    color: white;
+    font-size: large;
+    background-color: red;
+    
+}
+body {
+    background: white url("images/finger.jpeg") repeat;
+    width: 1500px;
+}

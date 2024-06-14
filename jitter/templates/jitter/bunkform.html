@@ -1,0 +1,16 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
+
+
+<form action="{% url 'jitter:bunkform' %}" method = "POST" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="your_name">Your name: </label>
+
+ <input id="your_name" type="text" name="your_name"> 
+<label for="other_name">Other name: </label> 
+ <input id="other_name" type="text" name="other_name">
+
+    <input type="submit" value="OK">
+</form>
